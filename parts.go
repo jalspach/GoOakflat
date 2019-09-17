@@ -64,8 +64,20 @@ type FuelRods struct {
 	Location            *UserLocation
 }
 
+//Pressurizer is used to maintain the pressure in the Primary Coolant Loop
+type Pressurizer struct {
+	FirstName, LastName string
+	Location            *UserLocation
+}
+
 //HeatExchanger is where the heat from the primary coolant loop is used to heat the secondary coolant loop turning it to steam and turning the turbine
 type HeatExchanger struct {
+	FirstName, LastName string
+	Location            *UserLocation
+}
+
+//SteamGenerator is where the heat from the primary coolant loop is used to heat the secondary coolant loop turning it to steam and turning the turbine
+type SteamGenerator struct {
 	FirstName, LastName string
 	Location            *UserLocation
 }
@@ -100,8 +112,44 @@ type SCP struct {
 	Location            *UserLocation
 }
 
-//TCP is the tower coolant pump. this pump circulates water from the concencer through the cooling towers
-type TCP struct {
+//PCL is the Primary Coolant Loop - It represents the entire loop
+type PCL struct {
+	FirstName, LastName string
+	Location            *UserLocation
+}
+
+//SCL is the secondary Coolant Loop - It represents the entire loop
+type SCL struct {
+	FirstName, LastName string
+	Location            *UserLocation
+}
+
+//TCL is the Tower Coolant Loop - It represents the entire loop
+type TCL struct {
+	FirstName, LastName string
+	Location            *UserLocation
+}
+
+//PPRL is the Primary Pressure Releif Valve. Pops off at a given pressure. Can be manually opened.
+type PPRL struct {
+	FirstName, LastName string
+	Location            *UserLocation
+}
+
+//SPRL is the secondary Pressure Releif Valve. Pops off at a given pressure. Can be manually opened.
+type SPRL struct {
+	FirstName, LastName string
+	Location            *UserLocation
+}
+
+//PSIS Passive Safety Injection System provides emergency core cooling in LOCA (Loss-Of-Coolant Accident)
+type PSIS struct {
+	FirstName, LastName string
+	Location            *UserLocation
+}
+
+//CVSump is the Containment Vessel Sump
+type CVSump struct {
 	FirstName, LastName string
 	Location            *UserLocation
 }

@@ -5,4 +5,11 @@ PCP - Primary Coolant Pump
 SCP - Secondary Coolant Pump
 TCP - Tower Coolant Pump
 Turbine
-Containment ContainmentStructure
+ContainmentStructure
+ReactorVessel
+Generator
+ControlRods
+FuelRods
+HeatExchanger
+CoolingTower
+TowerFans
