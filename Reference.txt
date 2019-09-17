@@ -1,15 +1,6 @@
 PWR Simulation
 
-parts
-PCP - Primary Coolant Pump
-SCP - Secondary Coolant Pump
-TCP - Tower Coolant Pump
-Turbine
-ContainmentStructure
-ReactorVessel
-Generator
-ControlRods
-FuelRods
-HeatExchanger
-CoolingTower
-TowerFans
+parts need to be tied together with some sort of delay that is relative to the water flow through the device
+i.e. the greater the flow, the faster temp moves from one part to another. Radiation leaks are handled the same way
+
+Each part has an age and a % WorkingStatus
