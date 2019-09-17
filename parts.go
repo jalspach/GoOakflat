@@ -14,6 +14,7 @@ const (
 var (
 	ExportedVar    = 42
 	nonExportedVar = "so say we all"
+	temp           = 0
 )
 
 // Main type(s) for the file,
@@ -28,16 +29,26 @@ type UserLocation struct {
 	Country string
 }
 
+//BasicStats contains all of the stats common to each part
+type BasicStats struct {
+	REM     float32
+	DegC    float32
+	AgeDays int
+	//WorkingStatus is 0-100 to denote how well the part works
+	WorkingStatus int
+}
+
 //Turbine is what turns the steam into rotational energy to turn the Generator.
 type Turbine struct {
-	FirstName, LastName string
-	Location            *UserLocation
+	RPM   int
+	Stats *BasicStats
 }
 
 //Generator is rotated by the turbine to make electricity. Its output will be in Kwh
 type Generator struct {
-	FirstName, LastName string
-	Location            *UserLocation
+	KwH   float32
+	RPM   int
+	Stats *BasicStats
 }
 
 //ReactorVessel is the core of the reactor.
@@ -88,6 +99,57 @@ type Condenser struct {
 	Location            *UserLocation
 }
 
+//PCL is the Primary Coolant Loop - It represents the entire loop
+type PCL struct {
+	FirstName, LastName string
+	Location            *UserLocation
+}
+
+//PCP is the primary coolant pump. This pump circulates water from the reactorvessel through the heat HeatExchanger
+type PCP struct {
+	FirstName, LastName string
+	Location            *UserLocation
+	MaxGPM              int
+}
+
+//PCV is the primary coolant Valve. This valve controls the flow of water from the reactorvessel through the heat HeatExchanger
+type PCV struct {
+	FirstName, LastName string
+	Location            *UserLocation
+	MaxGPM              int
+}
+
+//PPRL is the Primary Pressure Releif Valve. Pops off at a given pressure. Can be manually opened.
+type PPRL struct {
+	FirstName, LastName string
+	Location            *UserLocation
+}
+
+//SCL is the secondary Coolant Loop - It represents the entire loop
+type SCL struct {
+	FirstName, LastName string
+	Location            *UserLocation
+}
+
+//SCP is the secondary coolant pump. This pump circulates water from thge condencer back to the heat exchanger after the steam has turned the turbine.
+type SCP struct {
+	FirstName, LastName string
+	Location            *UserLocation
+}
+
+//SCV is the secondary coolant Valve. This valve controls the flow of water through the secondary loop
+type SCV struct {
+	FirstName, LastName string
+	Location            *UserLocation
+	MaxGPM              int
+}
+
+//SPRL is the secondary Pressure Releif Valve. Pops off at a given pressure. Can be manually opened.
+type SPRL struct {
+	FirstName, LastName string
+	Location            *UserLocation
+}
+
 //CoolingTower is the structure where the tower coolant loop is cooled
 type CoolingTower struct {
 	FirstName, LastName string
@@ -100,46 +162,23 @@ type TowerFans struct {
 	Location            *UserLocation
 }
 
-//PCP is the primary coolant pump. This pump circulates water from the reactorvessel through the heat HeatExchanger
-type PCP struct {
-	FirstName, LastName string
-	Location            *UserLocation
-}
-
-//SCP is the secondary coolant pump. This pump circulates water from thge condencer back to the heat exchanger after the steam has turned the turbine.
-type SCP struct {
-	FirstName, LastName string
-	Location            *UserLocation
-}
-
-//PCL is the Primary Coolant Loop - It represents the entire loop
-type PCL struct {
-	FirstName, LastName string
-	Location            *UserLocation
-}
-
-//SCL is the secondary Coolant Loop - It represents the entire loop
-type SCL struct {
-	FirstName, LastName string
-	Location            *UserLocation
-}
-
 //TCL is the Tower Coolant Loop - It represents the entire loop
 type TCL struct {
 	FirstName, LastName string
 	Location            *UserLocation
 }
 
-//PPRL is the Primary Pressure Releif Valve. Pops off at a given pressure. Can be manually opened.
-type PPRL struct {
+//TCP is the tower coolant pump. This pump circulates water from through the tower Loop
+type TCP struct {
 	FirstName, LastName string
 	Location            *UserLocation
 }
 
-//SPRL is the secondary Pressure Releif Valve. Pops off at a given pressure. Can be manually opened.
-type SPRL struct {
+//TCV is the tower coolant Valve. This valve controls the flow of water through the tower loop
+type TCV struct {
 	FirstName, LastName string
 	Location            *UserLocation
+	MaxGPM              int
 }
 
 //PSIS Passive Safety Injection System provides emergency core cooling in LOCA (Loss-Of-Coolant Accident)
