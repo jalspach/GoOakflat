@@ -4,3 +4,4 @@ parts need to be tied together with some sort of delay that is relative to the w
 i.e. the greater the flow, the faster temp moves from one part to another. Radiation leaks are handled the same way
 
 Each part has an age and a % WorkingStatus
+
