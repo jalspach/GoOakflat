@@ -31,11 +31,18 @@ type UserLocation struct {
 
 //BasicStats contains all of the stats common to each part
 type BasicStats struct {
-	REM     float32
+	// radiation absorbed dose (100 RAD = 1 Gy (gray))
+	RAD     int
+	//Temp in deg C
 	DegC    float32
-	AgeDays int
-	//WorkingStatus is 0-100 to denote how well the part works
-	WorkingStatus int
+	//Pressure in bar
+	Bar		float32
+	//Number of hours the part has been in opperation
+	AgeHours int
+	//DamageStatus is 0-100 to denote percentage of damage to the part (100% is total fail)
+	DamageStatus int
+	//Coolant capacity
+	CoolantCap int
 }
 
 //Turbine is what turns the steam into rotational energy to turn the Generator.
@@ -44,7 +51,7 @@ type Turbine struct {
 	Stats *BasicStats
 }
 
-//Generator is rotated by the turbine to make electricity. Its output will be in Kwh
+//Generator is spun by the turbine to make electricity. Its output will be in Kwh
 type Generator struct {
 	KwH   float32
 	RPM   int
@@ -203,7 +210,30 @@ func NewUser(firstName, lastName string) *User {
 		},
 	}
 }
-
+//Convert GPM to LPM
+func GPM2LPM(GPM, LPM) Float32 {
+	if GPM > 0 {
+	return GPM * 3.7854118
+	}
+	else if LPM > 0 {
+		return LPM / 3.7854118
+	}
+}
+//Convert flow to mass (in kg)
+func Flow2Mass (LPM) float32 {
+	return 
+}
+//Compute the change in temp (in C) and mass (in Kg) (m^3/s @ 1000 kg / m^3)
+func DeltaTemp(InFlowTemp, InFlowMass, ExistingTemp, ExistingMass, CoolentCapacity float32) {
+	NewMass := 0.0
+	NewTemp := 0.0
+	NewMass = (InFlowMass + ExistingMass) - OutFlowMass
+	return &Temp{newTemp: newTemp,ExistingMass
+		newMass: newMass,
+		},
+		((Mass1 * Temp1)+(Mass2 * Temp2))/(Mass1+Mass2)
+	}
+}
 // List of methods
 func (u *User) Greeting() string {
 	return fmt.Sprintf("Dear %s %s", u.FirstName, u.LastName)
