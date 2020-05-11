@@ -29,172 +29,174 @@ type UserLocation struct {
 	Country string
 }
 
-//BasicStats contains all of the stats common to each part
+// BasicStats contains all of the stats common to each part
 type BasicStats struct {
 	// radiation absorbed dose (100 RAD = 1 Gy (gray))
-	RAD     int
-	//Temp in deg C
-	DegC    float32
-	//Pressure in bar
-	Bar		float32
-	//Number of hours the part has been in opperation
+	RAD int
+	// Temp in deg C
+	DegC int
+	// Pressure in bar
+	Bar int
+	// Number of hours the part has been in opperation
 	AgeHours int
-	//DamageStatus is 0-100 to denote percentage of damage to the part (100% is total fail)
+	// DamageStatus is 0-100 to denote percentage of damage to the part (100 is total fail)
 	DamageStatus int
-	//Coolant capacity
+	// Coolant capacity
 	CoolantCap int
+	// Flowrate (m^3 / second) i.e. 1,000's of ltr / second
+	FlowRate int
 }
 
-//Turbine is what turns the steam into rotational energy to turn the Generator.
+// Turbine is what turns the steam into rotational energy to turn the Generator.
 type Turbine struct {
 	RPM   int
 	Stats *BasicStats
 }
 
-//Generator is spun by the turbine to make electricity. Its output will be in Kwh
+// Generator is spun by the turbine to make electricity. Its output will be in Kwh
 type Generator struct {
 	KwH   float32
 	RPM   int
 	Stats *BasicStats
 }
 
-//ReactorVessel is the core of the reactor.
+// ReactorVessel is the core of the reactor.
 type ReactorVessel struct {
 	FirstName, LastName string
 	Location            *UserLocation
 }
 
-//ControlRods are used to control the reaction.
+// ControlRods are used to control the reaction.
 type ControlRods struct {
 	FirstName, LastName string
 	Location            *UserLocation
 }
 
-//ContainmentStructure is the outer building holding the reactorvessel and other parts
+// ContainmentStructure is the outer building holding the reactorvessel and other parts
 type ContainmentStructure struct {
 	FirstName, LastName string
 	Location            *UserLocation
 }
 
-//FuelRods are the actual uranium fuel
+// FuelRods are the actual uranium fuel
 type FuelRods struct {
 	FirstName, LastName string
 	Location            *UserLocation
 }
 
-//Pressurizer is used to maintain the pressure in the Primary Coolant Loop
+// Pressurizer is used to maintain the pressure in the Primary Coolant Loop
 type Pressurizer struct {
 	FirstName, LastName string
 	Location            *UserLocation
 }
 
-//HeatExchanger is where the heat from the primary coolant loop is used to heat the secondary coolant loop turning it to steam and turning the turbine
+// HeatExchanger is where the heat from the primary coolant loop is used to heat the secondary coolant loop turning it to steam and turning the turbine
 type HeatExchanger struct {
 	FirstName, LastName string
 	Location            *UserLocation
 }
 
-//SteamGenerator is where the heat from the primary coolant loop is used to heat the secondary coolant loop turning it to steam and turning the turbine
+// SteamGenerator is where the heat from the primary coolant loop is used to heat the secondary coolant loop turning it to steam and turning the turbine
 type SteamGenerator struct {
 	FirstName, LastName string
 	Location            *UserLocation
 }
 
-//Condenser is where the steam from the turbine is cooled by the tower coolant loop
+// Condenser is where the steam from the turbine is cooled by the tower coolant loop
 type Condenser struct {
 	FirstName, LastName string
 	Location            *UserLocation
 }
 
-//PCL is the Primary Coolant Loop - It represents the entire loop
+// PCL is the Primary Coolant Loop - It represents the entire loop
 type PCL struct {
 	FirstName, LastName string
 	Location            *UserLocation
 }
 
-//PCP is the primary coolant pump. This pump circulates water from the reactorvessel through the heat HeatExchanger
+// PCP is the primary coolant pump. This pump circulates water from the reactorvessel through the heat HeatExchanger
 type PCP struct {
 	FirstName, LastName string
 	Location            *UserLocation
 	MaxGPM              int
 }
 
-//PCV is the primary coolant Valve. This valve controls the flow of water from the reactorvessel through the heat HeatExchanger
+// PCV is the primary coolant Valve. This valve controls the flow of water from the reactorvessel through the heat HeatExchanger
 type PCV struct {
 	FirstName, LastName string
 	Location            *UserLocation
 	MaxGPM              int
 }
 
-//PPRL is the Primary Pressure Releif Valve. Pops off at a given pressure. Can be manually opened.
+// PPRL is the Primary Pressure Releif Valve. Pops off at a given pressure. Can be manually opened.
 type PPRL struct {
 	FirstName, LastName string
 	Location            *UserLocation
 }
 
-//SCL is the secondary Coolant Loop - It represents the entire loop
+// SCL is the secondary Coolant Loop - It represents the entire loop
 type SCL struct {
 	FirstName, LastName string
 	Location            *UserLocation
 }
 
-//SCP is the secondary coolant pump. This pump circulates water from thge condencer back to the heat exchanger after the steam has turned the turbine.
+// SCP is the secondary coolant pump. This pump circulates water from thge condencer back to the heat exchanger after the steam has turned the turbine.
 type SCP struct {
 	FirstName, LastName string
 	Location            *UserLocation
 }
 
-//SCV is the secondary coolant Valve. This valve controls the flow of water through the secondary loop
+// SCV is the secondary coolant Valve. This valve controls the flow of water through the secondary loop
 type SCV struct {
 	FirstName, LastName string
 	Location            *UserLocation
 	MaxGPM              int
 }
 
-//SPRL is the secondary Pressure Releif Valve. Pops off at a given pressure. Can be manually opened.
+// SPRL is the secondary Pressure Releif Valve. Pops off at a given pressure. Can be manually opened.
 type SPRL struct {
 	FirstName, LastName string
 	Location            *UserLocation
 }
 
-//CoolingTower is the structure where the tower coolant loop is cooled
+// CoolingTower is the structure where the tower coolant loop is cooled
 type CoolingTower struct {
 	FirstName, LastName string
 	Location            *UserLocation
 }
 
-//TowerFans are large fans in the towers which help cool the water
+// TowerFans are large fans in the towers which help cool the water
 type TowerFans struct {
 	FirstName, LastName string
 	Location            *UserLocation
 }
 
-//TCL is the Tower Coolant Loop - It represents the entire loop
+// TCL is the Tower Coolant Loop - It represents the entire loop
 type TCL struct {
 	FirstName, LastName string
 	Location            *UserLocation
 }
 
-//TCP is the tower coolant pump. This pump circulates water from through the tower Loop
+// TCP is the tower coolant pump. This pump circulates water from through the tower Loop
 type TCP struct {
 	FirstName, LastName string
 	Location            *UserLocation
 }
 
-//TCV is the tower coolant Valve. This valve controls the flow of water through the tower loop
+// TCV is the tower coolant Valve. This valve controls the flow of water through the tower loop
 type TCV struct {
 	FirstName, LastName string
 	Location            *UserLocation
 	MaxGPM              int
 }
 
-//PSIS Passive Safety Injection System provides emergency core cooling in LOCA (Loss-Of-Coolant Accident)
+// PSIS Passive Safety Injection System provides emergency core cooling in LOCA (Loss-Of-Coolant Accident)
 type PSIS struct {
 	FirstName, LastName string
 	Location            *UserLocation
 }
 
-//CVSump is the Containment Vessel Sump
+// CVSump is the Containment Vessel Sump
 type CVSump struct {
 	FirstName, LastName string
 	Location            *UserLocation
@@ -210,28 +212,32 @@ func NewUser(firstName, lastName string) *User {
 		},
 	}
 }
-//Convert GPM to LPM
+
+// Convert GPM to LPM
 func GPM2LPM(GPM, LPM) Float32 {
 	if GPM > 0 {
-	return GPM * 3.7854118
-	} else if LPM > 0  {
+		return GPM * 3.7854118
+	} else if LPM > 0 {
 		return LPM / 3.7854118
 	} else {
 		return "NA"
 	}
 }
-//Convert flow to mass (in kg)
-func Flow2Mass (LPM) float32 {
-	return 
+
+// Convert flow to mass (in kg)
+func Flow2Mass(LPM) float32 {
+	return
 }
-//Compute the change in temp (in C) and mass (in Kg) (m^3/s @ 1000 kg / m^3)
+
+// Compute the change in temp (in C) and mass (in Kg) (m^3/s @ 1000 kg / m^3)
 func DeltaTemp(InFlowTemp, InFlowMass, ExistingTemp, ExistingMass, CoolentCapacity float32) {
 	NewMass := 0.0
 	NewTemp := 0.0
 	NewMass = (ExistingMass - InFlowMass) + InFlowMass //this could be more accurate by taking into account the max capacity
-	NewTemp = ((InFlowTemp*InflowMass)+(ExistingTemp*ExistingMaas)/NewMass)
+	NewTemp = ((InFlowTemp * InflowMass) + (ExistingTemp*ExistingMaas)/NewMass)
 	return NewMass, NewTemp
 }
+
 // List of methods
 func (u *User) Greeting() string {
 	return fmt.Sprintf("Dear %s %s", u.FirstName, u.LastName)
