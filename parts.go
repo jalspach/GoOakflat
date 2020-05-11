@@ -214,9 +214,10 @@ func NewUser(firstName, lastName string) *User {
 func GPM2LPM(GPM, LPM) Float32 {
 	if GPM > 0 {
 	return GPM * 3.7854118
-	}
-	else if LPM > 0 {
+	} else if LPM > 0  {
 		return LPM / 3.7854118
+	} else {
+		return "NA"
 	}
 }
 //Convert flow to mass (in kg)
@@ -227,12 +228,9 @@ func Flow2Mass (LPM) float32 {
 func DeltaTemp(InFlowTemp, InFlowMass, ExistingTemp, ExistingMass, CoolentCapacity float32) {
 	NewMass := 0.0
 	NewTemp := 0.0
-	NewMass = (InFlowMass + ExistingMass) - OutFlowMass
-	return &Temp{newTemp: newTemp,ExistingMass
-		newMass: newMass,
-		},
-		((Mass1 * Temp1)+(Mass2 * Temp2))/(Mass1+Mass2)
-	}
+	NewMass = (ExistingMass - InFlowMass) + InFlowMass //this could be more accurate by taking into account the max capacity
+	NewTemp = ((InFlowTemp*InflowMass)+(ExistingTemp*ExistingMaas)/NewMass)
+	return NewMass, NewTemp
 }
 // List of methods
 func (u *User) Greeting() string {
