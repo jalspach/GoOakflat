@@ -1,4 +1,4 @@
-[![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/jalspach/reactor) 
+[![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/jalspach/reactor)
 
 # GOakflat
 ## OakFlat simulation
@@ -18,6 +18,7 @@ ToDo
         * Heat Exchanger formulas
             * Towers (with and without fan)
             * Heat Exchanger
+        * Option - Do I build an "engine" function that adds RAD or whatever to each part?
     * Interface
         * Show stats
         * Input controls
@@ -30,7 +31,7 @@ ToDo
             * High Score
             * Etc
         * Random Breakdowns
-            * create failure scenarios 
+            * create failure scenarios
 
 # Tasks
 - [X] Gather list of "parts"
