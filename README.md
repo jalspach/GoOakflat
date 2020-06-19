@@ -7,6 +7,12 @@ PWR Simulation in Go
 ### Why?
 This is all so that I can teach myself Go. It is based on the http://gamtech.com/oakflat.aspx that I used to enjoy playing in my youth (NERD lol).
 
+### Dev setup
+* Atom
+  * go-debug
+  * go-plus
+  * go-signature-statusbar
+  * platformio-ide-terminal
 
 ToDo
 * Everything lol
@@ -34,7 +40,13 @@ ToDo
             * create failure scenarios
 
 # Tasks
-- [X] Gather list of "parts"
+- [] Gather list of "parts"
+    * need to refactor this into generic parts which get named when instantiated.
+    * thinkabout how to break these down (parts that move vs those that don't maybe)
+      * parts with no volume need to have volume set to 0
+    * rotating
+    * static
+- [] Clean up parts file and make it a package or module...learn to use package / module lol
 - [] Build sample system
     * Tank
     * Feed
