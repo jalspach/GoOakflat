@@ -1,9 +1,6 @@
 package parts
 
 // list of packages to import
-import (
-	"fmt"
-)
 
 // list of constants
 const (
@@ -14,10 +11,62 @@ const (
 var (
 	ExportedVar    = 42
 	nonExportedVar = "so say we all"
-	temp           = 0
 )
 
-// Main type(s) for the file,
+// Main type(s) for the file
+
+//New structs
+// BasicStats contains all of the stats common to every part
+type BasicStats struct {
+	// radiation absorbed dose (100 RAD = 1 Gy (gray))
+	RAD int
+	// Temp in deg C
+	DegC int
+	// Pressure in bar
+	Bar int
+	// Number of hours the part has been in opperation
+	AgeHours int
+
+	// Limits
+	// LimVolume - Amount of collant max
+	LimVolume int
+	// LimRAD - Number of survivable RAD's
+	LimRAD int
+	// LimDegC - Max temprature
+	LimDegC int
+	// LimBar - Max Pressure
+	LimBar int
+	// LimAgeHours - Max Age
+	LimAgeHours int
+
+	// Status
+	// Damage is 0-100 to denote percentage of damage to the part (100 is total fail)
+	Damage int
+	// Red or Yellow alarm indicator
+	AlarmColor string
+}
+type BasicStatic struct {
+}
+type BasicDynamic struct {
+	// basic stats
+	BasicStats
+	// Revalutions per min (this can either be passive like a turbine or active like a pump)
+	RPM int
+	// (KWH produced (positive) or consumed (negitive))
+	KWH int
+	// Requested Use in % of the max
+	ReqUse int
+	// Current Use in % of max
+	CurUse int
+	// Limits
+	// LimKwH
+	LimKWH int
+	// LimRPM
+	LimRPM int
+}
+
+//OLD Structs
+/*
 // try to keep the lowest amount of structs per file when possible.
 type User struct {
 	FirstName, LastName string
@@ -29,22 +78,19 @@ type UserLocation struct {
 	Country string
 }
 
-// BasicStats contains all of the stats common to each part
-type BasicStats struct {
-	// radiation absorbed dose (100 RAD = 1 Gy (gray))
-	RAD int
-	// Temp in deg C
-	DegC int
-	// Pressure in bar
-	Bar int
-	// Number of hours the part has been in opperation
-	AgeHours int
-	// DamageStatus is 0-100 to denote percentage of damage to the part (100 is total fail)
-	DamageStatus int
-	// Coolant capacity
-	CoolantCap int
+
+type PipeStats struct {
+	// Do we calc the capacty based on a size and length?
+	Diameter int
+	Length int
+	// Coolant capacity in L is now a f
+	CoolantCap = (Math.pi *((Diameter/2)*(Diameter / 2)) * Length)
 	// Flowrate (m^3 / second) i.e. 1,000's of ltr / second
 	FlowRate int
+	// Alarm color (Red, Yellow)
+}
+func (pipe *PipeStats) Capacity() {
+	(Math.pi *((PipeStats.Diameter / 2)*(PipeStats.Diameter / 2))* PipeStats.Length
 }
 
 // Turbine is what turns the steam into rotational energy to turn the Generator.
@@ -242,3 +288,4 @@ func DeltaTemp(InFlowTemp, InFlowMass, ExistingTemp, ExistingMass, CoolentCapaci
 func (u *User) Greeting() string {
 	return fmt.Sprintf("Dear %s %s", u.FirstName, u.LastName)
 }
+*/
