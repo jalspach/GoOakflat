@@ -67,7 +67,7 @@ func (b BasicDynamic) Alarm() string {
 //start by defining two parts and giving them qualities. Pass data beteen them.
 func main() {
 	PCP := BasicDynamic{
-		BasicStats: BasicStats{0, 0, 0, 0, 0, 100, 100, 100, 100, 100, 0, "Green"},
+		BasicStats: BasicStats{0, 0, 0, 0, 0, 100, 100, 100, 100, 100, 25, "Green"},
 		RPM:        0,
 		KWH:        0,
 		ReqUse:     0,
@@ -76,7 +76,7 @@ func main() {
 		LimRPM:     500,
 	}
 	fmt.Println("Temp", PCP.Bar)
-	fmt.Println("AlarmColor", PCP.AlarmColor)
+	fmt.Println("Damage", PCP.Damage)
 	fmt.Println("RPM", PCP.RPM)
 	fmt.Println(PCP)
 	fmt.Println("PCP Status is", PCP.Alarm())
