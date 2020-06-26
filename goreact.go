@@ -27,6 +27,7 @@ type BasicStats struct {
 	AlarmColor string // Red or Yellow alarm indicator
 }
 
+//BasicStatic is currently not used
 type BasicStatic struct {
 	BasicStats // basic stats
 }
@@ -45,12 +46,16 @@ type BasicDynamic struct {
 }
 
 //Interface
+
+//Curstatus is the interface for current status
 type Curstatus interface {
 	Alarm() string
 	Values() string
 }
 
 //Methods
+
+//Alarm returns the color of the alarm based on .Damage
 func (b BasicDynamic) Alarm() string {
 	switch {
 	case b.Damage >= 75:
