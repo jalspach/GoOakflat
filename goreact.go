@@ -72,7 +72,7 @@ func (b BasicDynamic) Alarm() string {
 //start by defining two parts and giving them qualities. Pass data beteen them.
 func main() {
 	PCP := BasicDynamic{
-		BasicStats: BasicStats{0, 0, 0, 0, 0, 100, 100, 100, 100, 100, 25, "Green"},
+		BasicStats: BasicStats{0, 0, 0, 0, 0, 100, 100, 100, 100, 100, 65, "Green"},
 		RPM:        0,
 		KWH:        0,
 		ReqUse:     0,
