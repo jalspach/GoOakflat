@@ -81,6 +81,16 @@ func (b DynamicHW) Alarm() string {
 
 //start by defining some parts and giving them qualities. Pass data beteen them.
 func main() {
+<<<<<<< HEAD
+	PCP := BasicDynamic{
+		BasicStats: BasicStats{0, 0, 0, 0, 0, 100, 100, 100, 100, 100, 65, "Green"},
+		RPM:        0,
+		KWH:        0,
+		ReqUse:     0,
+		CurUse:     0,
+		LimKWH:     100,
+		LimRPM:     500,
+=======
 	rand.Seed(time.Now().UnixNano())
 	pcpguid := xid.New()
 	PCP := DynamicHW{
@@ -143,7 +153,11 @@ func main() {
 		CurUse:      0,
 		LimKWH:      100,
 		LimRPM:      500,
+<<<<<<< HEAD
 		DSPart:      "PCP",
+=======
+>>>>>>> 58ca78ebed8adc6cf0eab2f559a6a58816577beb
+>>>>>>> 8ff863864e61e73f702a2afc6614b03fb94f9d9b
 	}
 
 	//SCP.Vol = SCP.Vol + PCP.Vol
