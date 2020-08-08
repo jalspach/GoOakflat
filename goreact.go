@@ -17,6 +17,7 @@ type DynamicHW struct {
 	Bar      int // Pressure in bar
 	Vol      int // Current volume in cu m
 	AgeHours int // Number of hours the part has been in opperation
+	Building string
 
 	// Limits
 	LimVolume   int // LimVolume - Amount of collant max
@@ -36,9 +37,10 @@ type DynamicHW struct {
 	LimKWH int // LimKwH
 	LimRPM int // LimRPM
 
-	//order
+	//order of operations
 
-	PartUUID string //unique ID for this part
+	//PartUUID string //unique ID for this part
+	PartUUID string
 	USPart   string //Previous part in the chain by name
 	DSPart   string //Next part in the chain by name
 }
@@ -49,11 +51,13 @@ type DynamicHW struct {
 type Curstatus interface {
 	Alarm() string
 	Values() string
+	Update() int
 }
 
 //Methods
 
 //Alarm returns the color of the alarm based on .Damage
+// https://science.ksc.nasa.gov/shuttle/technology/sts-newsref/sts-caws.html
 func (b DynamicHW) Alarm() string {
 	switch {
 	case b.Damage >= 75:
@@ -67,7 +71,15 @@ func (b DynamicHW) Alarm() string {
 	}
 }
 
-//start by defining two parts and giving them qualities. Pass data beteen them.
+// Need interface and method to pass data from part to part based on other factors. i.e. based on pump speed, pass vol and temp.
+//func (b DynamicHW) Update() int {
+	// do I update the whole thing in one function or each part alone?
+	//walk through the settings and update each in turn
+	//next := b.DSPart
+	//"b.DSPart".Vol = b.Vol + "b.DSPart".Vol
+//}
+
+//start by defining some parts and giving them qualities. Pass data beteen them.
 func main() {
 	rand.Seed(time.Now().UnixNano())
 	pcpguid := xid.New()
@@ -89,13 +101,14 @@ func main() {
 		CurUse:      0,
 		LimKWH:      100,
 		LimRPM:      500,
+		DSPart:      "SCP",
 	}
 	scpguid := xid.New()
 	SCP := DynamicHW{
 		RAD:         0,
 		DegC:        98,
 		Bar:         50,
-		Vol:         100,
+		Vol:         50,
 		AgeHours:    20,
 		PartUUID:    scpguid.String(),
 		LimRAD:      50,
@@ -109,6 +122,7 @@ func main() {
 		CurUse:      0,
 		LimKWH:      100,
 		LimRPM:      500,
+		DSPart:      "Tower1",
 	}
 	tower1guid := xid.New()
 	Tower1 := DynamicHW{
@@ -129,17 +143,30 @@ func main() {
 		CurUse:      0,
 		LimKWH:      100,
 		LimRPM:      500,
+		DSPart:      "PCP",
 	}
 
-	fmt.Println(PCP)
+	//SCP.Vol = SCP.Vol + PCP.Vol
+	SCP.Update()
+
+	fmt.Println("")
+	fmt.Println("~~~~~~~~~~ UUID's ~~~~~~~~~")
 	fmt.Println("PCP UUID:", PCP.PartUUID)
 	fmt.Println("SCP UUID:", SCP.PartUUID)
 	fmt.Println("Tower 1 UUID:", Tower1.PartUUID)
-
+	fmt.Println("")
+	fmt.Println("~~~~~~~~~~ PCP ~~~~~~~~~")
+	fmt.Println(PCP)
 	fmt.Println("Damage:", PCP.Damage)
 	fmt.Println("PCP Status is:", PCP.Alarm())
+	fmt.Println("")
+	fmt.Println("~~~~~~~~~~ SCP ~~~~~~~~~")
+	fmt.Println(SCP)
 	fmt.Println("Damage:", SCP.Damage)
 	fmt.Println("SCP Status is:", SCP.Alarm())
+	fmt.Println("")
+	fmt.Println("~~~~~~~~~~ Tower 1 ~~~~~~~~~")
+	fmt.Println(Tower1)
 	fmt.Println("Damage:", Tower1.Damage)
 	fmt.Println("Tower 1 Status is:", Tower1.Alarm())
 }

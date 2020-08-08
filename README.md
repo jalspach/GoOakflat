@@ -3,6 +3,7 @@
 # GOakflat
 ## OakFlat simulation
 PWR Simulation in Go
+https://www.ucsusa.org/sites/default/files/2019-10/pwr-intro.pdf
 
 ### Why?
 This is all so that I can teach myself Go. It is based on the http://gamtech.com/oakflat.aspx that I used to enjoy playing in my youth (NERD lol).
