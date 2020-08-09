@@ -1,6 +1,6 @@
 [![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/jalspach/reactor)
 
-# GOakflat
+# GoOakflat
 ## OakFlat simulation
 PWR Simulation in Go
 https://www.ucsusa.org/sites/default/files/2019-10/pwr-intro.pdf
