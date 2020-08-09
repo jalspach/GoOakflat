@@ -7,6 +7,7 @@ https://www.ucsusa.org/sites/default/files/2019-10/pwr-intro.pdf
 
 ### Why?
 This is all so that I can teach myself Go. It is based on the http://gamtech.com/oakflat.aspx that I used to enjoy playing in my youth (NERD lol).
+It started with the idea of simulating my Aquaponics system (http://jalspach.github.io/AquaPanix). This system is a closed loop of water that is pumped into a vessel of a given volume. It then flows through the rest of the system (as series of pipes and containers of given volumes) back to the sump. I would love to be able to simulate that flow as well as the heat transfer (not accounting for heat loss or gain along the circuit). Not exactly a PWR but from 100,000 foot level its close enough...if you squint ;-)
 
 ### Dev setup
 * Atom
@@ -29,7 +30,7 @@ ToDo
     * Interface
       * Show stats
       * Input Controls
-      * Console or web?
+      * Console or web front end?
       * Images would be great
       * Separate into client  server
         * This lets me focus on only doing one thing at a time
