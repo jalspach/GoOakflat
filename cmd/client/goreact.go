@@ -5,6 +5,8 @@ import (
 	"math/rand"
 	"time"
 
+	"github.com/jalspach/GoOakflat/pkg/parts"
+
 	"github.com/rs/xid"
 )
 
@@ -58,7 +60,8 @@ type Curstatus interface {
 
 //Alarm returns the color of the alarm based on .Damage
 // https://science.ksc.nasa.gov/shuttle/technology/sts-newsref/sts-caws.html
-func (b DynamicHW) Alarm() string {
+/*
+func (b parts.DynamicHW) Alarm() string {
 	switch {
 	case b.Damage >= 75:
 		return "Red Alarm"
@@ -70,6 +73,7 @@ func (b DynamicHW) Alarm() string {
 		return "no alarm"
 	}
 }
+*/
 
 // Need interface and method to pass data from part to part based on other factors. i.e. based on pump speed, pass vol and temp.
 //func (b DynamicHW) Update() int {
@@ -83,7 +87,7 @@ func (b DynamicHW) Alarm() string {
 func main() {
 	rand.Seed(time.Now().UnixNano())
 	pcpguid := xid.New()
-	PCP := DynamicHW{
+	PCP := parts.DynamicHW{
 		RAD:         0,
 		DegC:        98,
 		Bar:         50,
@@ -104,7 +108,7 @@ func main() {
 		DSPart:      "SCP",
 	}
 	scpguid := xid.New()
-	SCP := DynamicHW{
+	SCP := parts.DynamicHW{
 		RAD:         0,
 		DegC:        98,
 		Bar:         50,
@@ -125,7 +129,7 @@ func main() {
 		DSPart:      "Tower1",
 	}
 	tower1guid := xid.New()
-	Tower1 := DynamicHW{
+	Tower1 := parts.DynamicHW{
 		RAD:         0,
 		DegC:        98,
 		Bar:         50,
@@ -147,7 +151,7 @@ func main() {
 	}
 
 	//SCP.Vol = SCP.Vol + PCP.Vol
-	SCP.Update()
+	// SCP.Update()
 
 	fmt.Println("")
 	fmt.Println("~~~~~~~~~~ UUID's ~~~~~~~~~")

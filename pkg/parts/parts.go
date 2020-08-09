@@ -42,3 +42,16 @@ func LoadItem(id int) *DynamicHW {
 	return &DynamicHW{
 		Damage: rand.Intn(100)}
 }
+
+func (b DynamicHW) Alarm() string {
+	switch {
+	case b.Damage >= 75:
+		return "Red Alarm"
+	case b.Damage >= 50:
+		return "Yellow Alarm"
+	case b.Damage > -15:
+		return "C&W Alarm"
+	default:
+		return "no alarm"
+	}
+}

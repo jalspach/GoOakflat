@@ -1,4 +1,4 @@
-module github.com/jalspach/reactor
+module github.com/jalspach/GoOakflat
 
 go 1.14
 
