@@ -9,7 +9,7 @@ import (
 )
 
 //New structs
-
+/*
 // DynamicHW Currently all hardware is dymanic
 type DynamicHW struct {
 	RAD      int // radiation absorbed dose (100 RAD = 1 Gy (gray))
@@ -44,7 +44,7 @@ type DynamicHW struct {
 	USPart   string //Previous part in the chain by name
 	DSPart   string //Next part in the chain by name
 }
-
+*/
 //Interface
 
 //Curstatus is the interface for current status
