@@ -2,7 +2,7 @@
 
 # GoOakflat
 ## OakFlat simulation
-PWR Simulation in Go
+VERY Simplified PWR Simulation in Go
 https://www.ucsusa.org/sites/default/files/2019-10/pwr-intro.pdf
 
 ### Why?
