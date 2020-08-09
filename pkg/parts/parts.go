@@ -55,3 +55,12 @@ func (b DynamicHW) Alarm() string {
 		return "no alarm"
 	}
 }
+
+//Curstatus is the interface for current status
+type Curstatus interface {
+	Alarm() string
+	Values() string
+	Update() int
+}
+
+// need to implement https://stackoverflow.com/questions/37135193/how-to-set-default-values-in-go-structs

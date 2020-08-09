@@ -18,32 +18,36 @@ This is all so that I can teach myself Go. It is based on the http://gamtech.com
 ToDo
 * Everything lol
     * Basic mechanics
-        * Move temp from device to device
-        * Move radiation from device to device
-        * Pressure and its relation to temp and flow
-        * speed and game time
-        * Heat Exchanger formulas
-            * Towers (with and without fan)
-            * Heat Exchanger
-        * Option - Do I build an "engine" function that adds RAD or whatever to each part?
+      * Move temp from device to device
+      * Move radiation from device to device
+      * Pressure and its relation to temp and flow
+      * Speed and game time
+      * Heat Exchanger formulas
+        * Towers (with and without fan)
+        * Heat Exchanger
+      * Option - Do I build an "engine" function that cycles through each device in turn and updates the stats?
     * Interface
-        * Show stats
-        * Input controls
-        * Consoile or web
-        * Images would be great
+      * Show stats
+      * Input Controls
+      * Console or web?
+      * Images would be great
+      * Separate into client  server
+        * This lets me focus on only doing one thing at a time
     * "Game"
-        * Track
-            * Spending
-            * Proffit
-            * High Score
-            * Etc
-        * Random Breakdowns
-            * create failure scenarios
+      * Track
+        * Spending
+        * Profit
+        * Max MWH (average and point in time)
+        * Number of days w.o accident
+        * High Score
+        * Etc
+      * Random Breakdowns
+        * create failure scenarios
 
 # Tasks
 - [] Gather list of "parts"
     * need to refactor this into generic parts which get named when instantiated.
-    * thinkabout how to break these down (parts that move vs those that don't maybe)
+    * think about how to break these down (parts that move vs those that don't maybe)
       * parts with no volume need to have volume set to 0
     * rotating
     * static
