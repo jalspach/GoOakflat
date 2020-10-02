@@ -2,8 +2,10 @@ package parts
 
 import "math/rand"
 
-//New structs
-// BasicStats contains all of the stats common to every part
+// Need to build an initial populate tool - see note at the bottom of the page
+// also include a way of looking at parts in various ways all the red alarms, all the
+
+// DynamicHW contains all of the stats common to every part
 type DynamicHW struct {
 	RAD      int // radiation absorbed dose (100 RAD = 1 Gy (gray))
 	DegC     int // Temp in deg C
@@ -38,11 +40,13 @@ type DynamicHW struct {
 	DSPart   string //Next part in the chain by name
 }
 
+//LoadItem auto populates the damage...probably not used in the final product
 func LoadItem(id int) *DynamicHW {
 	return &DynamicHW{
 		Damage: rand.Intn(100)}
 }
 
+//Alarm types or "colors"
 func (b DynamicHW) Alarm() string {
 	switch {
 	case b.Damage >= 75:
